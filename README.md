@@ -4,13 +4,22 @@ This application conducts sentiment analysis on tweets obtained from twitter's p
 The analysis is carried out using AFINN data which is a list of words that have been manually labelled an integer rating between minus 5 (negative) and plus 5 (positive). This sentiment is then used along 
 with the popularity of each tweet to generate a pearson coefficient that shows the correlation between sentiment and number of times retweeted.  
 
+##Requirements
+1.) Latest version of python
+
+2.) Scipy module installed 
+
+Get Anaconda. It's quite useful
+
+[Anaconda](https://www.continuum.io/downloads) 
+
 ##Installation
 
 1.) Clone this project on your local machine
 
 2.) Navigate to the directory
 
-3.) Run the following commands in command prompt to try out each aspect of the tool
+3.) Run the following commands in command prompt to try out each aspect of the tool 
 	
 	a.) python tweet_sentiments-win.py load_tweets data/dog.txt 
 	
