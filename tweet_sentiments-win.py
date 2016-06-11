@@ -1,7 +1,7 @@
 # Your functions go here!
 import re
 import json
-#import scipy
+import scipy.stats
 
 """Function to extract words from a tweet"""
 def extract_words(sentence):
@@ -63,7 +63,7 @@ def hashtag_counts(filename):
   tweets = load_tweets(filename)
   count = {}
   for counter in tweets:
-    for j in counter['entities.hashtags.text']:
+    for j in counter['hashtags']:
       try:
         count[j] += 1
       except:
@@ -83,7 +83,6 @@ def tweet_sentiments(Tweet_file,Sentiment_file):
     tweet_sentiment = text_sentiment(tweet,sentiment_dictionary) #Finding the sentiment using tweet and dicitionary for reference
     tweet["sentiment"] = tweet_sentiment #assigning sentiment to a key in the tweet object
     new_tweet_list.append(tweet.copy()) 
-  print(new_tweet_list)
   return new_tweet_list
 
 """Function to show the pearson correlation coefficient between sentiments and retweets"""
@@ -99,7 +98,7 @@ def popular_sentiment(Tweet_file,Sentiment_file):
     retweet_count = float(tweet["retweet_count"])
     retweet_list.append(retweet_count)
     sentiment_list.append(sentiment)
-  correlation_value = scipy.stats.pearsonr(sentimentList,retweet_list)
+  correlation_value = scipy.stats.pearsonr(sentiment_list,retweet_list)
   return correlation_value[0]
 
 # Run the method specified by the command-line
@@ -166,7 +165,7 @@ if __name__ == '__main__':
     elif args.text == None: #no text, do file
       rated_tweets = tweet_sentiments(args.tweets, args.sentiments)
       for tweet in rated_tweets:
-        print(str(tweet).encode('utf8')) #encoding in utf-8 to include a large subset of characters
+        print(str(tweet['text']).encode('utf8')," -> Sentiment: ",str(tweet['sentiment'])) #encoding in utf-8 to include a large subset of characters
     else:
       print("Must include -f (tweet filename) or -t (text) flags to calculate sentiment.")
 
