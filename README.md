@@ -37,4 +37,6 @@ Get Anaconda. It's quite useful
 	
 ##Future Work
 
-To integrate Twitter's search API into the project. Further on the streaming API as well
+To integrate Twitter's search API into the project. Started work on twitter_stream.py. 
+
+Also to integrate the stream API.
