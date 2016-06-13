@@ -56,7 +56,7 @@ def popularity(filename):
   for value in tweets:
     retweets += float(value['retweet_count'])
     favorites += float(value['favorite_count'])
-  return (retweets / len(tweets), favorites / len(tweets))
+  return (retweets / len(tweets), favorites / len(tweets)) #Return a tuple of Average number of retweets and average number of favorites
 
 """Function to return a hashtag count of tweets"""
 def hashtag_counts(filename):
